@@ -17,7 +17,7 @@ Color amarillo= Color.fromARGB(255, 252, 201, 35);
 
 class Home extends StatelessWidget {
   List<Trabajador> favs = [
-  Trabajador('Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
+  Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
   Trabajador('Gustavo Martínez Polo', 9001, 'Kia Sportage', '2218JCC'),
   Trabajador('Gustavo Martínez Polo', 10240, 'Dacia Sandero', '0021HDK'),
   Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),
