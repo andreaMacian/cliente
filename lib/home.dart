@@ -3,29 +3,58 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'model/trabajador.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'screens/ayudaScreen.dart';
 import 'screens/favoritosScreen.dart';
 import 'screens/invitarAmigosScreen.dart';
 import 'screens/mainScreen.dart';
 import 'screens/resumenServicioScreen.dart';
 
-Color neutro= Colors.grey[300];
-Color azul_claro= Color.fromARGB(100, 209, 224, 240);
-Color azul_medio= Color.fromARGB(255, 34, 69, 109);
-Color azul_oscuro= Color.fromARGB(255, 19, 39, 61);
-Color amarillo= Color.fromARGB(255, 252, 201, 35);
+Color neutro = Colors.grey[300];
+Color azul_claro = Color.fromARGB(100, 209, 224, 240);
+Color azul_medio = Color.fromARGB(255, 34, 69, 109);
+Color azul_oscuro = Color.fromARGB(255, 19, 39, 61);
+Color amarillo = Color.fromARGB(255, 252, 201, 35);
 
-class Home extends StatelessWidget {
+//late GoogleMapController mapController;
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   List<Trabajador> favs = [
-  Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
-  Trabajador('Gustavo Martínez Polo', 9001, 'Kia Sportage', '2218JCC'),
-  Trabajador('Gustavo Martínez Polo', 10240, 'Dacia Sandero', '0021HDK'),
-  Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),
-];
+    Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
+    Trabajador('Gustavo Martínez Polo', 9001, 'Kia Sportage', '2218JCC'),
+    Trabajador('Gustavo Martínez Polo', 10240, 'Dacia Sandero', '0021HDK'),
+    Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),
+  ];
+
+  GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'App de Clientes',
-      home: FavoritosScreen(favoritos: favs),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Maps Sample App'),
+          backgroundColor: Colors.green[700],
+        ),
+        body: GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 11.0,
+          ),
+        ),
+      ),
       theme: ThemeData(fontFamily: 'SFProText-Semibold'),
       debugShowCheckedModeBanner: false,
     );

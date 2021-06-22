@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
+
 import 'home.dart';
 
 final db = FirebaseFirestore.instance;
@@ -13,6 +14,40 @@ WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 runApp(Home());
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* VER UN DOCUMENTO puntual:
 FutureBuilder(
