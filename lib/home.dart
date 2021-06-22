@@ -42,6 +42,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'App de Clientes',
+      theme: ThemeData(fontFamily: 'SFProText-Semibold'),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('Maps Sample App'),
@@ -55,8 +57,7 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      theme: ThemeData(fontFamily: 'SFProText-Semibold'),
-      debugShowCheckedModeBanner: false,
+      
     );
   }
 }
