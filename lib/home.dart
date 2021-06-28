@@ -1,5 +1,7 @@
 import 'package:clienteapp/screens/chatScreen.dart';
 import 'package:clienteapp/screens/principal.dart';
+import 'package:clienteapp/screens/seleccionDia.dart';
+import 'package:clienteapp/screens/seleccionUsuario.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -66,7 +68,7 @@ class _HomeState extends State<Home> {
                     topLeft: Radius.circular(30),
                   ),
                 ),
-                child: PrincipalWidget(), //EL WIDGET ESTE VA CAMBIANDO
+                child: SeleccionDia(), //EL WIDGET ESTE VA CAMBIANDO
               ),
               Container(
                 height: 50,
