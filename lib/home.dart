@@ -1,4 +1,5 @@
 import 'package:clienteapp/screens/chatScreen.dart';
+import 'package:clienteapp/screens/principal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -45,19 +46,63 @@ class _HomeState extends State<Home> {
       theme: ThemeData(fontFamily: 'SFProText-Semibold'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Maps Sample App'),
-          backgroundColor: Colors.green[700],
-        ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          ),
-        ),
+        body: Stack(
+            //fit: StackFit.expand,
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              GoogleMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: CameraPosition(
+                  target: _center,
+                  zoom: 11.0,
+                ),
+              ),
+              Container(
+                height: 240,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30),
+                  ),
+                ),
+                child: PrincipalWidget(), //EL WIDGET ESTE VA CAMBIANDO
+              ),
+              Container(
+                height: 50,
+                color: azul_claro,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.add_road_rounded,
+                        size: 30,
+                        color: azul_oscuro,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.electric_car_rounded,
+                        size: 30,
+                        color: azul_oscuro,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.flag_rounded,
+                        size: 30,
+                        color: azul_oscuro,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ]),
       ),
-      
     );
   }
 }
