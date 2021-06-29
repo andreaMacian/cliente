@@ -1,4 +1,6 @@
+import 'package:clienteapp/screens/buscandoServicio.dart';
 import 'package:clienteapp/screens/chatScreen.dart';
+import 'package:clienteapp/screens/enCamino.dart';
 import 'package:clienteapp/screens/principal.dart';
 import 'package:clienteapp/screens/seleccionDia.dart';
 import 'package:clienteapp/screens/seleccionTarifa.dart';
@@ -69,7 +71,7 @@ class _HomeState extends State<Home> {
                     topLeft: Radius.circular(30),
                   ),
                 ),
-                child: SeleccionTarifa(), //EL WIDGET ESTE VA CAMBIANDO
+                child: EnCamino(), //EL WIDGET ESTE VA CAMBIANDO
               ),
               Container(
                 height: 50,

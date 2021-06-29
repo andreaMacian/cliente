@@ -36,6 +36,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
                     onPressed: () {},
                     child: Container(
                       width: 270,
@@ -61,6 +62,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                                   style: TextStyle(
                                     fontFamily: 'SFProText-Bold',
                                     fontSize: 17,
+                                    color: azul_oscuro,
                                   ),
                                 ),
                                 Text(
@@ -68,6 +70,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                                   style: TextStyle(
                                     fontFamily: 'SFProText-Regular',
                                     fontSize: 14,
+                                    color: azul_oscuro,
                                   ),
                                 )
                               ],
@@ -79,6 +82,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                             style: TextStyle(
                               fontFamily: 'SFProText-Bold',
                               fontSize: 17,
+                              color: azul_oscuro,
                             ),
                           )
                         ],
@@ -87,6 +91,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                   ),
                   SizedBox(height:12),
                   ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
                     onPressed: () {},
                     child: Container(
                       width: 270,
@@ -112,6 +117,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                                   style: TextStyle(
                                     fontFamily: 'SFProText-Bold',
                                     fontSize: 17,
+                                    color: azul_oscuro,
                                   ),
                                 ),
                                 Text(
@@ -119,6 +125,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                                   style: TextStyle(
                                     fontFamily: 'SFProText-Regular',
                                     fontSize: 14,
+                                    color: azul_oscuro,
                                   ),
                                 )
                               ],
@@ -130,6 +137,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                             style: TextStyle(
                               fontFamily: 'SFProText-Bold',
                               fontSize: 17,
+                              color: azul_oscuro,
                             ),
                           )
                         ],
