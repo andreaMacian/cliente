@@ -10,6 +10,7 @@ class _AyudaScreenState extends State<AyudaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black, //pantalla mapa
+      
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

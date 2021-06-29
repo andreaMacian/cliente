@@ -1,6 +1,9 @@
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
+
+//CHAT MENU IZQUIERDA
+
 class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
