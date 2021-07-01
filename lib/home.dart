@@ -64,50 +64,54 @@ class _HomeState extends State<Home> {
                   zoom: 11.0,
                 ),
               ),
-              Container(
-                height: 240,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    topLeft: Radius.circular(30),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                Container(
+                  height: 710,//120, //240,   //ESTA ALTURA VA CAMBIANDO opc 1, 2, 3
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30),
+                    ),
                   ),
+                  child: ResumenServicioScreen(), //EL WIDGET ESTE VA CAMBIANDO
                 ),
-                child: Chat(), //EL WIDGET ESTE VA CAMBIANDO
-              ),
-              Container(
-                height: 50,
-                color: azul_claro,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.add_road_rounded,
-                        size: 30,
-                        color: azul_oscuro,
+                /*Container(
+                  height: 50,
+                  color: Colors.blueGrey[100],//azul_claro,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.add_road_rounded,
+                          size: 30,
+                          color: azul_oscuro,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.electric_car_rounded,
-                        size: 30,
-                        color: azul_oscuro,
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.electric_car_rounded,
+                          size: 30,
+                          color: azul_oscuro,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.flag_rounded,
-                        size: 30,
-                        color: azul_oscuro,
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.flag_rounded,
+                          size: 30,
+                          color: azul_oscuro,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
+                    ],
+                  ),
+                ),*/
+              ])
             ]),
       ),
     );

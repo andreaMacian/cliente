@@ -35,7 +35,7 @@ class _ChatState extends State<Chat> {
                   ),
                   onPressed: () {},
                 ),
-                Spacer(),
+               // Spacer(),
                 Text(
                   'Gustavo Martínez',
                   style: TextStyle(

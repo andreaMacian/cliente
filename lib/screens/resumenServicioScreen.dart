@@ -1,6 +1,9 @@
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
+
+//RESUMEN DE UN SERVICIO PASADO ACCEDIENDO DESDE LA LISTA DEL MENÚ DONDE SE VEN TODAS LAS CONTRATACIONES
+
 class ResumenServicioScreen extends StatefulWidget {
   @override
   _ResumenServicioScreenState createState() => _ResumenServicioScreenState();
@@ -9,14 +12,14 @@ class ResumenServicioScreen extends StatefulWidget {
 class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black, //pantalla mapa
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+    return Padding(
+      padding: const EdgeInsets.only(left: 21, right: 18, top: 21, bottom: 11),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             height: 660,
-            width: 290,
+            //width: 290,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -25,9 +28,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
             ),
             child: Column(
               children: [
-                SizedBox(
-                  height: 39,
-                ),
+                SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -64,7 +65,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                 ),
                 SizedBox(height: 30),
                 Container(
-                  width: 230,
+                  width: 260,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -179,35 +180,37 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                         ],
                       ),
                       SizedBox(height: 6),
-                      IconButton(
-                        icon: Row(
+                      TextButton(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Icon(
                               Icons.favorite_rounded,
                               size: 18,
+                              color: amarillo,
                             ),
                             SizedBox(width: 6),
                             Text(
                               'Añadir a Favoritos',
                               style: TextStyle(
-                                  fontFamily: 'SFProText-Semibold',
-                                  fontSize: 14,
-                                  color: Color.fromARGB(255, 252, 201, 35)),
+                                fontFamily: 'SFProText-Semibold',
+                                fontSize: 14,
+                                color: amarillo,
+                              ),
                             )
                           ],
                         ),
-                        color: Color.fromARGB(255, 252, 201, 35),
                         onPressed: () {},
                       ),
-                      SizedBox(height: 6),
-                      IconButton(
-                        icon: Row(
+                      //SizedBox(height: 6),
+                      TextButton(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Icon(
                               Icons.chat_bubble_rounded,
                               size: 18,
+                              color: amarillo,
                             ),
                             SizedBox(width: 6),
                             Text(
@@ -215,11 +218,10 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                               style: TextStyle(
                                   fontFamily: 'SFProText-Semibold',
                                   fontSize: 14,
-                                  color: Color.fromARGB(255, 252, 201, 35)),
+                                  color: amarillo),
                             )
                           ],
                         ),
-                        color: Color.fromARGB(255, 252, 201, 35),
                         onPressed: () {},
                       ),
                     ],
