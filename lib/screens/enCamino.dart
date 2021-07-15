@@ -81,7 +81,11 @@ class _EnCaminoState extends State<EnCamino> {
             ],
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                screen=1;
+              });
+            },
             icon: Icon(
               Icons.close,
               size: 27,

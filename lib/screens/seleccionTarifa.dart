@@ -23,7 +23,11 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        screen = 2;
+                      });
+                    },
                     icon: Icon(
                       Icons.arrow_back_ios_new_rounded,
                       size: 21,
@@ -36,8 +40,14 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
-                    onPressed: () {},
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white)),
+                    onPressed: () {
+                      setState(() {
+                        screen = 7;
+                      });
+                    },
                     child: Container(
                       width: 270,
                       height: 70,
@@ -50,7 +60,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                             size: 28,
                             color: azul_oscuro,
                           ),
-                          SizedBox(width:6),
+                          SizedBox(width: 6),
                           Container(
                             width: 160,
                             child: Column(
@@ -76,7 +86,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                               ],
                             ),
                           ),
-                          SizedBox(width:12),
+                          SizedBox(width: 12),
                           Text(
                             '24,75€',
                             style: TextStyle(
@@ -89,10 +99,16 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                       ),
                     ),
                   ),
-                  SizedBox(height:12),
+                  SizedBox(height: 12),
                   ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
-                    onPressed: () {},
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white)),
+                    onPressed: () {
+                      setState(() {
+                        screen = 7;
+                      });
+                    },
                     child: Container(
                       width: 270,
                       height: 70,
@@ -105,7 +121,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                             size: 28,
                             color: azul_oscuro,
                           ),
-                          SizedBox(width:6),
+                          SizedBox(width: 6),
                           Container(
                             width: 160,
                             child: Column(
@@ -131,7 +147,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                               ],
                             ),
                           ),
-                          SizedBox(width:12),
+                          SizedBox(width: 12),
                           Text(
                             '21-26€',
                             style: TextStyle(

@@ -3,8 +3,10 @@ import 'package:clienteapp/screens/chat.dart';
 import 'package:clienteapp/screens/chatScreen.dart';
 import 'package:clienteapp/screens/enCamino.dart';
 import 'package:clienteapp/screens/enRuta.dart';
+import 'package:clienteapp/screens/escogerTrayecto.dart';
 import 'package:clienteapp/screens/pagoServicioScreen.dart';
 import 'package:clienteapp/screens/principal.dart';
+import 'package:clienteapp/screens/seleccionConductor.dart';
 import 'package:clienteapp/screens/seleccionDia.dart';
 import 'package:clienteapp/screens/seleccionTarifa.dart';
 import 'package:clienteapp/screens/seleccionUsuario.dart';
@@ -76,13 +78,13 @@ class _HomeState extends State<Home> {
     if (screen == 1) {
       mainWidget = PrincipalWidget(); 
     } else if (screen == 2) {
-      mainWidget = ResumenServicioScreen();//
+      mainWidget = EscogerTrayecto();
     } else if (screen == 3) {
       mainWidget = SeleccionUsuario();
     } else if (screen == 4) {
       mainWidget = SeleccionDia();
     } else if (screen == 5) {
-      mainWidget = ResumenServicioScreen();//
+      mainWidget = SeleccionConductor();
     } else if (screen == 6) {
       mainWidget = SeleccionTarifa();
     } else if (screen == 7) {

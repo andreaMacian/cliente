@@ -151,6 +151,7 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                   onChanged: (bool newValue) {
                     setState(() {
                       newValue = newValue; //ESTO HAY QUE CAMBIARLO
+                      screen=5;
                     });
                   }),
               Text(

@@ -39,7 +39,7 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                 child: IconButton(
                   onPressed: () {
                     setState(() {
-                      screen = 3;//CAMBIAR ESTO, NO ES ESTA PANTALLA
+                      screen = 3;
                     });
                   },
                   icon: Icon(
@@ -62,7 +62,11 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      screen=4;
+                    });
+                  },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
@@ -72,7 +76,11 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
               ),
               SizedBox(width: 3),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    screen=6;
+                  });
+                },
                 icon: Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 21,
