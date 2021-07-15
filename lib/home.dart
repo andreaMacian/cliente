@@ -3,6 +3,7 @@ import 'package:clienteapp/screens/chat.dart';
 import 'package:clienteapp/screens/chatScreen.dart';
 import 'package:clienteapp/screens/enCamino.dart';
 import 'package:clienteapp/screens/enRuta.dart';
+import 'package:clienteapp/screens/pagoServicioScreen.dart';
 import 'package:clienteapp/screens/principal.dart';
 import 'package:clienteapp/screens/seleccionDia.dart';
 import 'package:clienteapp/screens/seleccionTarifa.dart';
@@ -10,6 +11,7 @@ import 'package:clienteapp/screens/seleccionUsuario.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'model/cliente.dart';
 import 'model/trabajador.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'screens/ayudaScreen.dart';
@@ -17,6 +19,8 @@ import 'screens/favoritosScreen.dart';
 import 'screens/invitarAmigosScreen.dart';
 import 'screens/mainScreen.dart';
 import 'screens/resumenServicioScreen.dart';
+
+//VARIABLES GENERALS DEL PROGRAMA:
 
 Color neutro = Colors.grey[300];
 Color azul_claro = Color.fromARGB(100, 209, 224, 240);
@@ -26,18 +30,38 @@ Color amarillo = Color.fromARGB(255, 252, 201, 35);
 
 //late GoogleMapController mapController;
 
+int screen = 1; //POR DEFECTO AL INICIO ES LA 1
+
+Trabajador taxista =
+    Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
+Cliente yo = Cliente('Andrea Macian', 'HFK34', 144.97, 685245177);
+
+/*List<Trabajador> favs = [
+    Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
+    Trabajador('Gustavo Martínez Polo', 9001, 'Kia Sportage', '2218JCC'),
+    Trabajador('Gustavo Martínez Polo', 10240, 'Dacia Sandero', '0021HDK'),
+    Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),
+  ];*/
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  List<Trabajador> favs = [
-    Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
-    Trabajador('Gustavo Martínez Polo', 9001, 'Kia Sportage', '2218JCC'),
-    Trabajador('Gustavo Martínez Polo', 10240, 'Dacia Sandero', '0021HDK'),
-    Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),
-  ];
+  /* 1-> PantallaPrincipal()
+     2-> PantallaTrayecto()
+     3-> SeleccionUsuario()
+     4-> SeleccionDia()
+     5-> SeleccionConductor()
+     6-> SeleccionTarifa()
+     7-> BuscandoServicio()
+     8-> Espera Servicio()
+     9-> EnRuta()
+     10-> MetodoPago()
+     11-> ResumenServicio()
+  
+  */
 
   GoogleMapController mapController;
 
@@ -48,27 +72,59 @@ class _HomeState extends State<Home> {
   }
 
   Widget build(BuildContext context) {
+    var mainWidget;
+    if (screen == 1) {
+      mainWidget = PrincipalWidget(); 
+    } else if (screen == 2) {
+      mainWidget = ResumenServicioScreen();//
+    } else if (screen == 3) {
+      mainWidget = SeleccionUsuario();
+    } else if (screen == 4) {
+      mainWidget = SeleccionDia();
+    } else if (screen == 5) {
+      mainWidget = ResumenServicioScreen();//
+    } else if (screen == 6) {
+      mainWidget = SeleccionTarifa();
+    } else if (screen == 7) {
+      mainWidget = BuscandoServicio();
+    } else if (screen == 8) {
+      mainWidget = EnCamino();
+    } else if (screen == 9) {
+      mainWidget = EnRuta();
+    } else if (screen == 10) {
+      mainWidget = PagoServicioScreen();
+    } else if (screen == 11) {
+      mainWidget = ResumenServicioScreen();
+    }
+
     return MaterialApp(
       title: 'App de Clientes',
       theme: ThemeData(fontFamily: 'SFProText-Semibold'),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
-            //fit: StackFit.expand,
-            alignment: AlignmentDirectional.bottomCenter,
-            children: [
-              GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: CameraPosition(
-                  target: _center,
-                  zoom: 11.0,
-                ),
+          //fit: StackFit.expand,
+          alignment: AlignmentDirectional.bottomCenter,
+          children: [
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 11.0,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
                 Container(
-                  height: 710,//120, //240,   //ESTA ALTURA VA CAMBIANDO opc 1, 2, 3
+                  height: (screen == 2 ||
+                          screen == 5 ||
+                          screen == 10 ||
+                          screen == 11)
+                      ? 710
+                      : (screen == 9)
+                          ? 120
+                          : 240, //120, //240,   //ESTA ALTURA VA CAMBIANDO opc 1, 2, 3
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -76,7 +132,7 @@ class _HomeState extends State<Home> {
                       topLeft: Radius.circular(30),
                     ),
                   ),
-                  child: ResumenServicioScreen(), //EL WIDGET ESTE VA CAMBIANDO
+                  child: mainWidget,
                 ),
                 /*Container(
                   height: 50,
@@ -111,8 +167,10 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),*/
-              ])
-            ]),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

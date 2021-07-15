@@ -13,6 +13,7 @@ WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 runApp(Home());
 }
+
 /*void main() {
   runApp(Home());
 }*/

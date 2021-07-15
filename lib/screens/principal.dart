@@ -37,7 +37,11 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      screen = 3;//CAMBIAR ESTO, NO ES ESTA PANTALLA
+                    });
+                  },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
