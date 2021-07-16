@@ -9,6 +9,7 @@ class SeleccionDia extends StatefulWidget {
 }
 
 class _SeleccionDiaState extends State<SeleccionDia> {
+  bool valorCheckBox = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,11 +39,15 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      screen = 1;
+                    });
+                  },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
-                    color: azul_oscuro,
+                    color: (screen == 3) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -59,11 +64,15 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      screen = 1;
+                    });
+                  },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
-                    color: azul_oscuro,
+                    color: (screen == 4) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -106,9 +115,9 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                             Icons.calendar_view_day_rounded,
                             size: 21,
                           ),
-                         // SizedBox(width: 12),
+                          // SizedBox(width: 12),
                           Text(
-                            '21/04/2021',
+                            'dd/mm/aaaa',
                             style: TextStyle(
                               fontFamily: 'SFProText-Semibold',
                               fontSize: 14,
@@ -130,7 +139,7 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                           ),
                           //SizedBox(width: 12),
                           Text(
-                            '19:30',
+                            'hh:mm',
                             style: TextStyle(
                               fontFamily: 'SFProText-Semibold',
                               fontSize: 14,
@@ -147,11 +156,17 @@ class _SeleccionDiaState extends State<SeleccionDia> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Checkbox(
-                  value: false,
+                  value: valorCheckBox,
+                  checkColor: amarillo,
                   onChanged: (bool newValue) {
                     setState(() {
-                      newValue = newValue; //ESTO HAY QUE CAMBIARLO
-                      screen=5;
+                      valorCheckBox = newValue;
+                      if (valorCheckBox) {
+                        screen = 5;
+                      }
+                      else{
+                        screen=4;
+                      }
                     });
                   }),
               Text(

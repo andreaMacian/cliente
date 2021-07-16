@@ -1,7 +1,6 @@
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
-
 //RESUMEN DE UN SERVICIO PASADO ACCEDIENDO DESDE LA LISTA DEL MENÚ DONDE SE VEN TODAS LAS CONTRATACIONES
 
 class ResumenServicioScreen extends StatefulWidget {

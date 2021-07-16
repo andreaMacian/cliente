@@ -1,3 +1,4 @@
+import 'package:clienteapp/model/servicio.dart';
 import 'package:clienteapp/screens/buscandoServicio.dart';
 import 'package:clienteapp/screens/chat.dart';
 import 'package:clienteapp/screens/chatScreen.dart';
@@ -32,11 +33,12 @@ Color amarillo = Color.fromARGB(255, 252, 201, 35);
 
 //late GoogleMapController mapController;
 
-int screen = 1; //POR DEFECTO AL INICIO ES LA 1
+int screen = 5; //POR DEFECTO AL INICIO ES LA 1
 
 Trabajador taxista =
-    Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
-Cliente yo = Cliente('Andrea Macian', 'HFK34', 144.97, 685245177);
+    Trabajador('TAX0001','Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
+Cliente cliente = Cliente('CLI0001','Andrea', 'HFK34', 144.97, 685245177);
+Servicio viaje = Servicio();
 
 /*List<Trabajador> favs = [
     Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),

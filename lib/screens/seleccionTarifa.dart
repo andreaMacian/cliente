@@ -58,7 +58,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                           Icon(
                             Icons.emoji_events_rounded,
                             size: 28,
-                            color: azul_oscuro,
+                            color: (screen == 7) ? amarillo : azul_oscuro,
                           ),
                           SizedBox(width: 6),
                           Container(
@@ -68,7 +68,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Premium',
+                                  '${viaje.tipo}',
                                   style: TextStyle(
                                     fontFamily: 'SFProText-Bold',
                                     fontSize: 17,
@@ -119,7 +119,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                           Icon(
                             Icons.emoji_events_rounded,
                             size: 28,
-                            color: azul_oscuro,
+                            color: (screen == 7) ? amarillo : azul_oscuro,
                           ),
                           SizedBox(width: 6),
                           Container(
@@ -129,7 +129,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Premium',
+                                  '${viaje.tipo}',
                                   style: TextStyle(
                                     fontFamily: 'SFProText-Bold',
                                     fontSize: 17,

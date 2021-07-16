@@ -8,10 +8,10 @@ class Conductor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Trabajador> favs = [
-      Trabajador('Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
+      /*Trabajador('Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
       Trabajador('Gustavo Martínez Polo', 9001, 'Kia Sportage', '2218JCC'),
       Trabajador('Gustavo Martínez Polo', 10240, 'Dacia Sandero', '0021HDK'),
-      Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),
+      Trabajador('Gustavo Martínez Polo', 870, 'Seat Altea', '3991KTK'),*/
     ];
     return ListView.builder(
       itemCount: favs.length,

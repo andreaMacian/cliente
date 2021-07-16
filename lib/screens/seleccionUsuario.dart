@@ -38,11 +38,15 @@ class _SeleccionUsuarioState extends State<SeleccionUsuario> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      screen = 1;
+                    });
+                  },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
-                    color: azul_oscuro,
+                    color: (screen == 3) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -59,11 +63,15 @@ class _SeleccionUsuarioState extends State<SeleccionUsuario> {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      screen = 4;
+                    });
+                  },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
-                    color: azul_oscuro,
+                    color: (screen == 4) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
