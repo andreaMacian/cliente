@@ -8,15 +8,15 @@ import 'home.dart';
 
 final db = FirebaseFirestore.instance;
 
-Future<void> main() async {
+/*Future<void> main() async {
 WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 runApp(Home());
-}
-
-/*void main() {
-  runApp(Home());
 }*/
+
+void main() {
+  runApp(Home());
+}
 
 
 

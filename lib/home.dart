@@ -33,12 +33,12 @@ Color amarillo = Color.fromARGB(255, 252, 201, 35);
 
 //late GoogleMapController mapController;
 
-int screen = 5; //POR DEFECTO AL INICIO ES LA 1
+int screen = 1; //POR DEFECTO AL INICIO ES LA 1
 
 Trabajador taxista =
     Trabajador('TAX0001','Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
 Cliente cliente = Cliente('CLI0001','Andrea', 'HFK34', 144.97, 685245177);
-Servicio viaje = Servicio();
+Servicio viaje = Servicio(id_usuario: cliente.id);
 
 /*List<Trabajador> favs = [
     Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
