@@ -5,7 +5,9 @@ import '../home.dart';
 
 class SeleccionConductor extends StatefulWidget {
   //const SeleccionConductor({ Key? key }) : super(key: key);
+  const SeleccionConductor({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _SeleccionConductorState createState() => _SeleccionConductorState();
 }
@@ -79,12 +81,11 @@ class _SeleccionConductorState extends State<SeleccionConductor> {
         ),
         Spacer(),
         ElevatedButton(
-          style:
-              ButtonStyle(backgroundColor: MaterialStateProperty.all(amarillo)), //COLOR BOTON
+          style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(amarillo)), //COLOR BOTON
           onPressed: () {
-            setState(() {
-              screen = 6;
-            });
+            widget.changeScreen(6);
           },
           child: Text(
             'Continuar',

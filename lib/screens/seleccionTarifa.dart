@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 
 class SeleccionTarifa extends StatefulWidget {
   //const SeleccionTarifa({ Key? key }) : super(key: key);
+  const SeleccionTarifa({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _SeleccionTarifaState createState() => _SeleccionTarifaState();
 }
 
 class _SeleccionTarifaState extends State<SeleccionTarifa> {
+  int numScreen=6;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,9 +27,8 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      setState(() {
-                        screen = 2;
-                      });
+                      widget.changeScreen(2);
+                      numScreen=2;
                     },
                     icon: Icon(
                       Icons.arrow_back_ios_new_rounded,
@@ -44,9 +46,8 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
-                      setState(() {
-                        screen = 7;
-                      });
+                      widget.changeScreen(7);
+                      numScreen=7;
                     },
                     child: Container(
                       width: 270,
@@ -58,7 +59,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                           Icon(
                             Icons.emoji_events_rounded,
                             size: 28,
-                            color: (screen == 7) ? amarillo : azul_oscuro,
+                            color: (numScreen == 7) ? amarillo : azul_oscuro,
                           ),
                           SizedBox(width: 6),
                           Container(
@@ -105,9 +106,8 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
-                      setState(() {
-                        screen = 7;
-                      });
+                      widget.changeScreen(7);
+                      numScreen=7;
                     },
                     child: Container(
                       width: 270,
@@ -119,7 +119,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                           Icon(
                             Icons.emoji_events_rounded,
                             size: 28,
-                            color: (screen == 7) ? amarillo : azul_oscuro,
+                            color: (numScreen == 7) ? amarillo : azul_oscuro,
                           ),
                           SizedBox(width: 6),
                           Container(

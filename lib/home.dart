@@ -30,8 +30,6 @@ Color amarillo = Color.fromARGB(255, 252, 201, 35);
 
 //late GoogleMapController mapController;
 
-int screen = 1; //POR DEFECTO AL INICIO ES LA 1
-
 Trabajador taxista = Trabajador(
     'TAX0001', 'Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
 Cliente cliente = Cliente('CLI0001', 'Andrea', 'HFK34', 144.97, 685245177);
@@ -63,7 +61,7 @@ class _HomeState extends State<Home> {
      11-> ResumenServicio()
   
   */
-
+  int screen = 1; //POR DEFECTO AL INICIO ES LA 1
   GoogleMapController mapController;
 
   final LatLng _center = const LatLng(45.521563, -122.677433);
@@ -72,30 +70,36 @@ class _HomeState extends State<Home> {
     mapController = controller;
   }
 
+  void _changeScreens(int numScreen) {
+    setState(() {
+      screen = numScreen;
+    });
+  }
+
   Widget build(BuildContext context) {
     var mainWidget;
     if (screen == 1) {
-      mainWidget = PrincipalWidget();
+      mainWidget = PrincipalWidget(changeScreen: _changeScreens);
     } else if (screen == 2) {
-      mainWidget = EscogerTrayecto();
+      mainWidget = EscogerTrayecto(changeScreen: _changeScreens);
     } else if (screen == 3) {
-      mainWidget = SeleccionUsuario();
+      mainWidget = SeleccionUsuario(changeScreen: _changeScreens);
     } else if (screen == 4) {
-      mainWidget = SeleccionDia();
+      mainWidget = SeleccionDia(changeScreen: _changeScreens);
     } else if (screen == 5) {
-      mainWidget = SeleccionConductor();
+      mainWidget = SeleccionConductor(changeScreen: _changeScreens);
     } else if (screen == 6) {
-      mainWidget = SeleccionTarifa();
+      mainWidget = SeleccionTarifa(changeScreen: _changeScreens);
     } else if (screen == 7) {
-      mainWidget = BuscandoServicio();
+      mainWidget = BuscandoServicio(changeScreen: _changeScreens);
     } else if (screen == 8) {
-      mainWidget = EnCamino();
+      mainWidget = EnCamino(changeScreen: _changeScreens);
     } else if (screen == 9) {
-      mainWidget = EnRuta();
+      mainWidget = EnRuta(changeScreen: _changeScreens);
     } else if (screen == 10) {
-      mainWidget = MetodoPagoScreen();
+      mainWidget = MetodoPagoScreen(changeScreen: _changeScreens);
     } else if (screen == 11) {
-      mainWidget = ResumenServicioScreen();
+      mainWidget = ResumenServicioScreen(changeScreen: _changeScreens);
     }
 
     return MaterialApp(

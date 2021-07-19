@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 //RESUMEN DE UN SERVICIO PASADO ACCEDIENDO DESDE LA LISTA DEL MENÚ DONDE SE VEN TODAS LAS CONTRATACIONES
 
 class ResumenServicioScreen extends StatefulWidget {
+  const ResumenServicioScreen({Key key, this.changeScreen}) : super(key: key);
+
+  final Function(int numScreen) changeScreen;
   @override
   _ResumenServicioScreenState createState() => _ResumenServicioScreenState();
 }
@@ -254,9 +257,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                                 backgroundColor: MaterialStateProperty.all(
                                     amarillo)), //COLOR BOTON
                             onPressed: () {
-                              setState(() {
-                                screen = 1;
-                              });
+                              widget.changeScreen(1);
                             },
                             child: Text(
                               'Finalizar Servicio',

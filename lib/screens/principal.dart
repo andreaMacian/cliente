@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 
 class PrincipalWidget extends StatefulWidget {
   //const PrincipalWidget({ Key ? key }) : super(key: key);
+  const PrincipalWidget({Key key, this.changeScreen}) : super(key: key);
 
+ final Function (int numScreen) changeScreen;
+
+  
   @override
   _PrincipalWidgetState createState() => _PrincipalWidgetState();
 }
 
 class _PrincipalWidgetState extends State<PrincipalWidget> {
+  int numScreen=1;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,14 +44,13 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 3;
-                    });
+                    widget.changeScreen(3);
+                    numScreen=3;
                   },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
-                    color: (screen == 3) ? amarillo : azul_oscuro,
+                    color: (numScreen == 3) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -63,23 +68,21 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 4;
-                    });
+                    widget.changeScreen(4);
+                    numScreen=4;
                   },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
-                    color: (screen ==4) ? amarillo : azul_oscuro,
+                    color: (numScreen == 4) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
               SizedBox(width: 3),
               IconButton(
                 onPressed: () {
-                  setState(() {
-                    screen = 6;
-                  });
+                  widget.changeScreen(6);
+                  numScreen=6;
                 },
                 icon: Icon(
                   Icons.arrow_forward_ios_rounded,

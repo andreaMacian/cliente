@@ -1,10 +1,14 @@
 import 'dart:async';
+import 'dart:js';
 
 import 'package:flutter/material.dart';
 
 import '../home.dart';
 
 class MetodoPagoScreen extends StatefulWidget {
+  const MetodoPagoScreen({Key key, this.changeScreen}) : super(key: key);
+
+  final Function(int numScreen) changeScreen;
   @override
   _MetodoPagoScreenState createState() => _MetodoPagoScreenState();
 }
@@ -12,30 +16,35 @@ class MetodoPagoScreen extends StatefulWidget {
 class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
   bool valorCheckBox = false;
 
-  void _startTimer() {
-    Timer(Duration(seconds: 5), () {
-      setState(() {
-        AlertDialog(
-          content: Text('El pago ha sido recibido correctamente. Gracias'),
-          actions: [
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    //print('jajajajajajajaja');
-                    screen = 11;
-                  });
-                },
-                child: Text('Ok'))
-          ],
-        );
-
-        //print('hola caracol');
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    showAlertDialog() {
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text('El pago ha sido recibido correctamente. Gracias'),
+            actions: [
+              TextButton(
+                child: Text('Ok'),
+                onPressed: () {
+                  widget.changeScreen(11);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    void _startTimer() {
+      Timer(Duration(seconds: 12), () {
+        //widget.changeScreen(11);
+        showAlertDialog();
+      });
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding:
@@ -443,9 +452,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                                 backgroundColor: MaterialStateProperty.all(
                                     amarillo)), //COLOR BOTON
                             onPressed: () {
-                              setState(() {
-                                _startTimer();
-                              });
+                              //_startTimer();
+                              showAlertDialog();
                             },
                             child: Text(
                               'Proceder al Pago',

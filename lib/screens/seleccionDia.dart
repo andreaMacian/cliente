@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 
 class SeleccionDia extends StatefulWidget {
   //const SeleccionDia({ Key? key }) : super(key: key);
+  const SeleccionDia({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _SeleccionDiaState createState() => _SeleccionDiaState();
 }
 
 class _SeleccionDiaState extends State<SeleccionDia> {
+  int numScreen = 4;
   bool valorCheckBox = false;
   @override
   Widget build(BuildContext context) {
@@ -40,14 +43,13 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 1;
-                    });
+                    widget.changeScreen(1);
+                    numScreen = 1;
                   },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
-                    color: (screen == 3) ? amarillo : azul_oscuro,
+                    color: (numScreen == 3) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -65,14 +67,13 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 1;
-                    });
+                    widget.changeScreen(1);
+                    numScreen = 1;
                   },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
-                    color: (screen == 4) ? amarillo : azul_oscuro,
+                    color: (numScreen == 4) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -162,10 +163,11 @@ class _SeleccionDiaState extends State<SeleccionDia> {
                     setState(() {
                       valorCheckBox = newValue;
                       if (valorCheckBox) {
-                        screen = 5;
-                      }
-                      else{
-                        screen=4;
+                        widget.changeScreen(5);
+                        numScreen = 5;
+                      } else {
+                        widget.changeScreen(4);
+                        numScreen = 4;
                       }
                     });
                   }),

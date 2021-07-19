@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 
 class BuscandoServicio extends StatefulWidget {
   //const BuscandoServicio({ Key? key }) : super(key: key);
+  const BuscandoServicio({Key key, this.changeScreen}) : super(key: key);
+
+  final Function(int numScreen) changeScreen;
 
   @override
   _BuscandoServicioState createState() => _BuscandoServicioState();
@@ -13,10 +16,7 @@ class BuscandoServicio extends StatefulWidget {
 class _BuscandoServicioState extends State<BuscandoServicio> {
   void _startTimer() {
     Timer(Duration(seconds: 3), () {
-      setState(() {
-        screen=8;
-        //print('hola caracol');
-      });
+      widget.changeScreen(8);
     });
   }
 

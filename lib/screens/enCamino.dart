@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 class EnCamino extends StatefulWidget {
   //const EnCamino({ Key? key }) : super(key: key);
+  const EnCamino({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _EnCaminoState createState() => _EnCaminoState();
 }
@@ -13,10 +15,7 @@ class EnCamino extends StatefulWidget {
 class _EnCaminoState extends State<EnCamino> {
   void _startTimer() {
     Timer(Duration(seconds: 3), () {
-      setState(() {
-        screen = 9;
-        //print('hola caracol');
-      });
+      widget.changeScreen(9);
     });
   }
 
@@ -93,9 +92,7 @@ class _EnCaminoState extends State<EnCamino> {
           ),
           IconButton(
             onPressed: () {
-              setState(() {
-                screen = 1;
-              });
+              widget.changeScreen(1);
             },
             icon: Icon(
               Icons.close,

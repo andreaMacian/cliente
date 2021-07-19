@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 
 class EscogerTrayecto extends StatefulWidget {
   //const escogerTrayecto({ Key? key }) : super(key: key);
+  const EscogerTrayecto({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _EscogerTrayectoState createState() => _EscogerTrayectoState();
 }
 
 class _EscogerTrayectoState extends State<EscogerTrayecto> {
+  int numScreen = 2;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,14 +41,13 @@ class _EscogerTrayectoState extends State<EscogerTrayecto> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 3;
-                    });
+                    widget.changeScreen(3);
+                    numScreen = 3;
                   },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
-                    color: (screen == 3) ? amarillo : azul_oscuro,
+                    color: (numScreen == 3) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -63,23 +65,21 @@ class _EscogerTrayectoState extends State<EscogerTrayecto> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 4;
-                    });
+                    widget.changeScreen(4);
+                    numScreen = 4;
                   },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
-                    color: (screen == 4) ? amarillo : azul_oscuro,
+                    color: (numScreen == 4) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
               SizedBox(width: 3),
               IconButton(
                 onPressed: () {
-                  setState(() {
-                    screen = 6;
-                  });
+                  widget.changeScreen(6);
+                  numScreen = 6;
                 },
                 icon: Icon(
                   Icons.arrow_forward_ios_rounded,
@@ -178,9 +178,8 @@ class _EscogerTrayectoState extends State<EscogerTrayecto> {
                   onPressed: () {
                     if (viaje.origen == null) {
                       viaje.origen = 'Calle Aragón 321';
-                    }
-                    else{
-                      viaje.destino='Calle Aragón 321';
+                    } else {
+                      viaje.destino = 'Calle Aragón 321';
                     }
                   },
                   icon: Icon(
@@ -193,9 +192,8 @@ class _EscogerTrayectoState extends State<EscogerTrayecto> {
                   onPressed: () {
                     if (viaje.origen == null) {
                       viaje.origen = 'Calle Cinca 30';
-                    }
-                    else{
-                      viaje.destino='Calle Cinca 30';
+                    } else {
+                      viaje.destino = 'Calle Cinca 30';
                     }
                   },
                   icon: Icon(

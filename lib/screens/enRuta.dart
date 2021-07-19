@@ -5,19 +5,18 @@ import 'package:flutter/material.dart';
 
 class EnRuta extends StatefulWidget {
   //const EnRuta({ Key? key }) : super(key: key);
+  const EnRuta({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _EnRutaState createState() => _EnRutaState();
 }
 
 class _EnRutaState extends State<EnRuta> {
-                             //ESTE TIMER DEBERÍA QUITARSE
+  //ESTE TIMER DEBERÍA QUITARSE
   void _startTimer() {
     Timer(Duration(seconds: 5), () {
-      setState(() {
-        screen = 10;
-        //print('hola caracol');
-      });
+      widget.changeScreen(10);
     });
   }
 

@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 
 class SeleccionUsuario extends StatefulWidget {
   //const SeleccionUsuario({ Key? key }) : super(key: key);
+  const SeleccionUsuario({Key key, this.changeScreen}) : super(key: key);
 
+  final Function(int numScreen) changeScreen;
   @override
   _SeleccionUsuarioState createState() => _SeleccionUsuarioState();
 }
 
 class _SeleccionUsuarioState extends State<SeleccionUsuario> {
+  int numScreen=3;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,14 +42,13 @@ class _SeleccionUsuarioState extends State<SeleccionUsuario> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 1;
-                    });
+                    widget.changeScreen(1);
+                    numScreen=1;
                   },
                   icon: Icon(
                     Icons.person_rounded,
                     size: 21,
-                    color: (screen == 3) ? amarillo : azul_oscuro,
+                    color: (numScreen == 3) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -64,14 +66,13 @@ class _SeleccionUsuarioState extends State<SeleccionUsuario> {
                 ),
                 child: IconButton(
                   onPressed: () {
-                    setState(() {
-                      screen = 4;
-                    });
+                    widget.changeScreen(4);
+                    numScreen=4;
                   },
                   icon: Icon(
                     Icons.calendar_today_rounded,
                     size: 21,
-                    color: (screen == 4) ? amarillo : azul_oscuro,
+                    color: (numScreen == 4) ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
