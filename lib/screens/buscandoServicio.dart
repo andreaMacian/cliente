@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +11,18 @@ class BuscandoServicio extends StatefulWidget {
 }
 
 class _BuscandoServicioState extends State<BuscandoServicio> {
+  void _startTimer() {
+    Timer(Duration(seconds: 3), () {
+      setState(() {
+        screen=8;
+        //print('hola caracol');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _startTimer();
     return Padding(
       padding: const EdgeInsets.only(left: 6, right: 6, top: 21, bottom: 11),
       child: Row(
@@ -64,7 +76,6 @@ class _BuscandoServicioState extends State<BuscandoServicio> {
                               color: Colors.blueGrey[200],
                             ),
                           ),
-                          
                         ],
                       ),
                       Text(

@@ -1,9 +1,39 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../home.dart';
 
-class MetodoPagoScreen extends StatelessWidget {
+class MetodoPagoScreen extends StatefulWidget {
+  @override
+  _MetodoPagoScreenState createState() => _MetodoPagoScreenState();
+}
+
+class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
   bool valorCheckBox = false;
+
+  void _startTimer() {
+    Timer(Duration(seconds: 5), () {
+      setState(() {
+        AlertDialog(
+          content: Text('El pago ha sido recibido correctamente. Gracias'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    //print('jajajajajajajaja');
+                    screen = 11;
+                  });
+                },
+                child: Text('Ok'))
+          ],
+        );
+
+        //print('hola caracol');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -413,9 +443,9 @@ class MetodoPagoScreen extends StatelessWidget {
                                 backgroundColor: MaterialStateProperty.all(
                                     amarillo)), //COLOR BOTON
                             onPressed: () {
-                              /*setState(() {
-                                screen = 1;
-                              });*/
+                              setState(() {
+                                _startTimer();
+                              });
                             },
                             child: Text(
                               'Proceder al Pago',

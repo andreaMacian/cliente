@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:clienteapp/model/servicio.dart';
 import 'package:clienteapp/screens/buscandoServicio.dart';
 import 'package:clienteapp/screens/enCamino.dart';
@@ -28,11 +30,11 @@ Color amarillo = Color.fromARGB(255, 252, 201, 35);
 
 //late GoogleMapController mapController;
 
-int screen = 1; //POR DEFECTO AL INICIO ES LA 1
+int screen = 10; //POR DEFECTO AL INICIO ES LA 1
 
-Trabajador taxista =
-    Trabajador('TAX0001','Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
-Cliente cliente = Cliente('CLI0001','Andrea', 'HFK34', 144.97, 685245177);
+Trabajador taxista = Trabajador(
+    'TAX0001', 'Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
+Cliente cliente = Cliente('CLI0001', 'Andrea', 'HFK34', 144.97, 685245177);
 Servicio viaje = Servicio(id_usuario: cliente.id);
 
 /*List<Trabajador> favs = [
@@ -73,7 +75,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     var mainWidget;
     if (screen == 1) {
-      mainWidget = PrincipalWidget(); 
+      mainWidget = PrincipalWidget();
     } else if (screen == 2) {
       mainWidget = EscogerTrayecto();
     } else if (screen == 3) {

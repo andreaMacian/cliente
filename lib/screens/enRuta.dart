@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +11,19 @@ class EnRuta extends StatefulWidget {
 }
 
 class _EnRutaState extends State<EnRuta> {
+                             //ESTE TIMER DEBERÍA QUITARSE
+  void _startTimer() {
+    Timer(Duration(seconds: 5), () {
+      setState(() {
+        screen = 10;
+        //print('hola caracol');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _startTimer();
     return Padding(
       padding: const EdgeInsets.only(left: 21, right: 18, top: 31, bottom: 11),
       child: Column(

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +11,18 @@ class EnCamino extends StatefulWidget {
 }
 
 class _EnCaminoState extends State<EnCamino> {
+  void _startTimer() {
+    Timer(Duration(seconds: 3), () {
+      setState(() {
+        screen = 9;
+        //print('hola caracol');
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _startTimer();
     return Padding(
       padding: const EdgeInsets.only(left: 21, right: 6, top: 31, bottom: 11),
       child: Row(
@@ -49,14 +61,13 @@ class _EnCaminoState extends State<EnCamino> {
                       color: Colors.blueGrey[200],
                     ),
                   ),
-                  SizedBox(width:32),
+                  SizedBox(width: 32),
                   Text(
                     '3 min',
                     style: TextStyle(
-                      fontFamily: 'SFProText-Bold',
-                      fontSize: 17,
-                      color: azul_oscuro
-                    ),
+                        fontFamily: 'SFProText-Bold',
+                        fontSize: 17,
+                        color: azul_oscuro),
                   ),
                 ],
               ),
@@ -83,7 +94,7 @@ class _EnCaminoState extends State<EnCamino> {
           IconButton(
             onPressed: () {
               setState(() {
-                screen=1;
+                screen = 1;
               });
             },
             icon: Icon(
