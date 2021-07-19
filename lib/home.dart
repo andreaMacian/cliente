@@ -1,7 +1,5 @@
 import 'package:clienteapp/model/servicio.dart';
 import 'package:clienteapp/screens/buscandoServicio.dart';
-import 'package:clienteapp/screens/chat.dart';
-import 'package:clienteapp/screens/chatScreen.dart';
 import 'package:clienteapp/screens/enCamino.dart';
 import 'package:clienteapp/screens/enRuta.dart';
 import 'package:clienteapp/screens/escogerTrayecto.dart';
@@ -17,10 +15,7 @@ import 'package:flutter/material.dart';
 import 'model/cliente.dart';
 import 'model/trabajador.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'screens/ayudaScreen.dart';
-import 'screens/favoritosScreen.dart';
-import 'screens/invitarAmigosScreen.dart';
-import 'screens/mainScreen.dart';
+import 'screens/metodoPagoScreen.dart';
 import 'screens/resumenServicioScreen.dart';
 
 //VARIABLES GENERALS DEL PROGRAMA:
@@ -96,7 +91,7 @@ class _HomeState extends State<Home> {
     } else if (screen == 9) {
       mainWidget = EnRuta();
     } else if (screen == 10) {
-      mainWidget = PagoServicioScreen();
+      mainWidget = MetodoPagoScreen();
     } else if (screen == 11) {
       mainWidget = ResumenServicioScreen();
     }

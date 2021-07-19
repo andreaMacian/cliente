@@ -29,18 +29,10 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
               children: [
                 SizedBox(height: 24),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 6,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: 20,
-                        color: azul_oscuro,
-                      ),
+                      width: 12,
                     ),
                     Spacer(),
                     Text(
@@ -51,31 +43,22 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       ),
                     ),
                     Spacer(),
-                    SizedBox(width: 50),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.close,
+                        size: 25,
+                        color: azul_oscuro,
+                      ),
+                    ),
                   ],
                 ),
-                SizedBox(height: 18),
-                Container(
-                  height: 90,
-                  child: Image.asset(
-                    'assets/avion-de-papel-01.png',
-                    color: amarillo,
-                  ),
-                ),
-                SizedBox(height: 30),
+                SizedBox(height: 35),
                 Container(
                   width: 260,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '16 Abril 2021, 19:32',
-                        style: TextStyle(
-                          fontFamily: 'SFProText-Semibold',
-                          fontSize: 16.5,
-                        ),
-                      ),
-                      SizedBox(height: 24),
                       Text(
                         'Servicio Taxi Premium',
                         style: TextStyle(
@@ -83,15 +66,27 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           fontSize: 14,
                         ),
                       ),
-                      SizedBox(height: 6),
-                      Text(
-                        'Coste: 22,60€',
-                        style: TextStyle(
-                          fontFamily: 'SFProText-Semibold',
-                          fontSize: 14,
-                        ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Text(
+                            'Tarifa: Taximetro',
+                            style: TextStyle(
+                              fontFamily: 'SFProText-Semibold',
+                              fontSize: 14,
+                            ),
+                          ),
+                          Spacer(),
+                          Text(
+                            '22,60€',
+                            style: TextStyle(
+                              fontFamily: 'SFProText-Bold',
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 6),
+                      SizedBox(height: 8),
                       Text(
                         'Método de Pago: Efectivo',
                         style: TextStyle(
@@ -99,7 +94,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           fontSize: 14,
                         ),
                       ),
-                      SizedBox(height: 24),
+                      SizedBox(height: 32),
                       Text(
                         'Recogida: Av. Carrilet, 229',
                         style: TextStyle(
@@ -107,7 +102,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           fontSize: 14,
                         ),
                       ),
-                      SizedBox(height: 6),
+                      SizedBox(height: 8),
                       Text(
                         'Destino: Carrer dels Horts, 32',
                         style: TextStyle(
@@ -115,7 +110,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           fontSize: 14,
                         ),
                       ),
-                      SizedBox(height: 6),
+                      SizedBox(height: 8),
                       Text(
                         'Inicio: 16 Abril 2021, 19:32h',
                         style: TextStyle(
@@ -123,7 +118,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           fontSize: 14,
                         ),
                       ),
-                      SizedBox(height: 6),
+                      SizedBox(height: 8),
                       Text(
                         'Fin: 16 Abril 2021, 19:51h',
                         style: TextStyle(
@@ -131,7 +126,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           fontSize: 14,
                         ),
                       ),
-                      SizedBox(height: 24),
+                      SizedBox(height: 32),
                       Row(
                         //mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -139,15 +134,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Seat Mii 6902GHY',
-                                style: TextStyle(
-                                  fontFamily: 'SFProText-Semibold',
-                                  fontSize: 14,
-                                ),
-                              ),
-                              SizedBox(height: 6),
-                              Text(
-                                'Lic. 4310',
+                                'Seat Mii 6902GHY - Lic. 3421',
                                 style: TextStyle(
                                   fontFamily: 'SFProText-Semibold',
                                   fontSize: 14,
@@ -157,16 +144,16 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                               Text(
                                 'Paco Sánchez Álamo',
                                 style: TextStyle(
-                                  fontFamily: 'SFProText-Semibold',
+                                  fontFamily: 'SFProText-Regular',
                                   fontSize: 14,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(width: 32),
+                          Spacer(),
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: 32,
+                            height: 32,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -178,7 +165,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 6),
+                      SizedBox(height: 8),
                       TextButton(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -186,7 +173,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                             Icon(
                               Icons.favorite_rounded,
                               size: 18,
-                              color: amarillo,
+                              color: azul_oscuro,
                             ),
                             SizedBox(width: 6),
                             Text(
@@ -194,34 +181,92 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                               style: TextStyle(
                                 fontFamily: 'SFProText-Semibold',
                                 fontSize: 14,
-                                color: amarillo,
+                                color: azul_oscuro,
                               ),
                             )
                           ],
                         ),
                         onPressed: () {},
                       ),
-                      //SizedBox(height: 6),
-                      TextButton(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Icon(
-                              Icons.chat_bubble_rounded,
-                              size: 18,
-                              color: amarillo,
+                      SizedBox(height: 36),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'PUNTUA TU EXPERIENCIA',
+                            style: TextStyle(
+                              fontFamily: 'SFProText-Semibold',
+                              fontSize: 14,
+                              color: azul_oscuro,
                             ),
-                            SizedBox(width: 6),
-                            Text(
-                              'Contactar con Conductor',
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.star_border_rounded,
+                            size: 30,
+                            color: amarillo,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Icon(
+                            Icons.star_border_rounded,
+                            size: 30,
+                            color: amarillo,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Icon(
+                            Icons.star_border_rounded,
+                            size: 30,
+                            color: amarillo,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Icon(
+                            Icons.star_border_rounded,
+                            size: 30,
+                            color: amarillo,
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Icon(
+                            Icons.star_border_rounded,
+                            size: 30,
+                            color: amarillo,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 36),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    amarillo)), //COLOR BOTON
+                            onPressed: () {
+                              setState(() {
+                                screen = 1;
+                              });
+                            },
+                            child: Text(
+                              'Finalizar Servicio',
                               style: TextStyle(
-                                  fontFamily: 'SFProText-Semibold',
-                                  fontSize: 14,
-                                  color: amarillo),
-                            )
-                          ],
-                        ),
-                        onPressed: () {},
+                                fontFamily: 'SFProText-Semibold',
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
