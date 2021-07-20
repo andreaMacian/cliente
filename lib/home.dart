@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'dart:math';
 
 import 'package:clienteapp/model/servicio.dart';
 import 'package:clienteapp/screens/buscandoServicio.dart';
@@ -13,8 +13,10 @@ import 'package:clienteapp/screens/seleccionTarifa.dart';
 import 'package:clienteapp/screens/seleccionUsuario.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'model/cliente.dart';
+import 'model/directionsProvider.dart';
 import 'model/trabajador.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'screens/metodoPagoScreen.dart';
@@ -33,7 +35,11 @@ Color amarillo = Color.fromARGB(255, 252, 201, 35);
 Trabajador taxista = Trabajador(
     'TAX0001', 'Gustavo Martínez Polo', 3421, 'Sköda Karoq', '3231JSN');
 Cliente cliente = Cliente('CLI0001', 'Andrea', 'HFK34', 144.97, 685245177);
-Servicio viaje = Servicio(id_usuario: cliente.id);
+Servicio viaje = Servicio(
+    id_usuario: cliente.id,
+    origen: 'Av. Fernando Pessoa, 27',
+    destino: 'Calle Palomar, 55',
+    fechaInicio: DateTime.now());
 
 /*List<Trabajador> favs = [
     Trabajador('Gustavos Martínez Polo', 3421, 'Sköda Karoq', '3231JSN'),
@@ -67,10 +73,19 @@ class _HomeState extends State<Home> {
   double latitudActual;
   double longitudActual;
 
-  /*final*/ LatLng center = LatLng(45.321563, -122.677433);
+  LatLng origen = LatLng(41.4406964, 2.1929965);
+  /*final*/ LatLng destino = LatLng(41.4422415, 2.1914872);
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  _centreView() async {
+    await mapController.getVisibleRegion();
+    var left = min(origen.latitude, destino.latitude);
+    var right = max(origen.latitude, destino.latitude);
+    var top = max(origen.longitude, destino.longitude);
+    var bottom = min(origen.longitude, destino.longitude);
+    var bounds = LatLngBounds(
+        southwest: LatLng(left, bottom), northeast: LatLng(right, top));
+    var cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 50);
+    mapController.animateCamera(cameraUpdate);
   }
 
   void _changeScreens(int numScreen) {
@@ -105,7 +120,7 @@ class _HomeState extends State<Home> {
       mainWidget = ResumenServicioScreen(changeScreen: _changeScreens);
     }
 
-   /* List<LatLng> trayecto = [
+    /* List<LatLng> trayecto = [
       center,
       LatLng(45.521563, -122.977433),
       LatLng(45.721563, -123.277433),
@@ -117,80 +132,126 @@ class _HomeState extends State<Home> {
       LatLng(46.921563, -125.777433),
     ];*/
 
-    return MaterialApp(
-      title: 'App de Clientes',
-      theme: ThemeData(fontFamily: 'SFProText-Semibold'),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Stack(
-          //fit: StackFit.expand,
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: center,
-                zoom: 11.0,
-              ),
-              myLocationEnabled: true,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  height: (screen == 2 ||
-                          screen == 5 ||
-                          screen == 10 ||
-                          screen == 11)
-                      ? 710
-                      : (screen == 9)
-                          ? 120
-                          : 240, //120, //240,   //ESTA ALTURA VA CAMBIANDO opc 1, 2, 3
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30),
-                      topLeft: Radius.circular(30),
+    void _onMapCreated(GoogleMapController controller) {
+      mapController = controller;
+      _centreView();
+
+      //var api = Provider.of<DirectionsProvider>(context, listen: false);
+      //Provider.of<DirectionsProvider>(context, listen: false).findDirections(origen, destino);
+    }
+
+    Set<Marker> _createMarkers() {
+      var tmp = Set<Marker>();
+      tmp.add(Marker(
+          markerId: MarkerId('origen'),
+          position: origen,
+          infoWindow: InfoWindow(title: 'Origen')));
+      tmp.add(Marker(
+          markerId: MarkerId('destino'),
+          position: destino,
+          infoWindow: InfoWindow(title: 'Destino')));
+      return tmp;
+    }
+
+    bool visible;
+    return ChangeNotifierProvider(
+      create: (_) => DirectionsProvider(),
+      child: MaterialApp(
+        title: 'App de Clientes',
+        theme: ThemeData(fontFamily: 'SFProText-Semibold'),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Stack(
+            //fit: StackFit.expand,
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              Consumer<DirectionsProvider>(
+                builder: (BuildContext context, DirectionsProvider api,
+                    Widget child) {
+                  return GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: origen,
+                      zoom: 9.0,
                     ),
+                    markers: _createMarkers(),
+                    polylines: api.currentRoute,
+                    myLocationEnabled: true,
+                    zoomGesturesEnabled: true,
+                    myLocationButtonEnabled: true,
+                  );
+                },
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    height: (screen == 2 ||
+                            screen == 5 ||
+                            screen == 10 ||
+                            screen == 11)
+                        ? 694
+                        : (screen == 9)
+                            ? 120
+                            : 240, //120, //240,   //ESTA ALTURA VA CAMBIANDO opc 1, 2, 3
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(30),
+                        topLeft: Radius.circular(30),
+                      ),
+                    ),
+                    child: mainWidget,
                   ),
-                  child: mainWidget,
-                ),
-                /*Container(
-                  height: 50,
-                  color: Colors.blueGrey[100],//azul_claro,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add_road_rounded,
-                          size: 30,
-                          color: azul_oscuro,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.electric_car_rounded,
-                          size: 30,
-                          color: azul_oscuro,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.flag_rounded,
-                          size: 30,
-                          color: azul_oscuro,
-                        ),
-                      ),
-                    ],
+                  Container(
+                    height: (screen == 1 ||
+                            screen == 2 ||
+                            screen == 3 ||
+                            screen == 4 ||
+                            screen == 5)
+                        ? 50
+                        : 0,
+                    color: Colors.blueGrey[100], //azul_claro,
+                    child: (screen == 1 ||
+                            screen == 2 ||
+                            screen == 3 ||
+                            screen == 4 ||
+                            screen == 5)
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.add_road_rounded,
+                                  size: 30,
+                                  color: azul_oscuro,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.electric_car_rounded,
+                                  size: 30,
+                                  color: azul_oscuro,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.flag_rounded,
+                                  size: 30,
+                                  color: azul_oscuro,
+                                ),
+                              ),
+                            ],
+                          )
+                        : null,
                   ),
-                ),*/
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

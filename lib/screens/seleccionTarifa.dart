@@ -46,6 +46,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
+                      viaje.tarifa='Precio Cerrado';
                       widget.changeScreen(7);
                       numScreen=7;
                     },
@@ -106,6 +107,7 @@ class _SeleccionTarifaState extends State<SeleccionTarifa> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
+                      viaje.tarifa='Taxímetro';
                       widget.changeScreen(7);
                       numScreen=7;
                     },

@@ -15,7 +15,7 @@ class BuscandoServicio extends StatefulWidget {
 
 class _BuscandoServicioState extends State<BuscandoServicio> {
   void _startTimer() {
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 6), () {
       widget.changeScreen(8);
     });
   }
@@ -29,7 +29,9 @@ class _BuscandoServicioState extends State<BuscandoServicio> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              widget.changeScreen(6);
+            },
             icon: Icon(
               Icons.arrow_back_ios_new_rounded,
               size: 21,
@@ -69,7 +71,7 @@ class _BuscandoServicioState extends State<BuscandoServicio> {
                       Row(
                         children: [
                           Text(
-                            'Servicio Premium',
+                            'Servicio ${viaje.tipo}',
                             style: TextStyle(
                               fontFamily: 'SFProText-Regular',
                               fontSize: 14,
@@ -79,7 +81,7 @@ class _BuscandoServicioState extends State<BuscandoServicio> {
                         ],
                       ),
                       Text(
-                        'Origen: Calle Aragón, 321',
+                        'Origen: ${viaje.origen}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Regular',
                           fontSize: 14,
@@ -87,7 +89,7 @@ class _BuscandoServicioState extends State<BuscandoServicio> {
                         ),
                       ),
                       Text(
-                        'Destino: Avenida Diagonal, 133',
+                        'Destino: ${viaje.destino}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Regular',
                           fontSize: 14,
@@ -115,7 +117,9 @@ class _BuscandoServicioState extends State<BuscandoServicio> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.changeScreen(1);
+                      },
                       icon: Icon(
                         Icons.close,
                         size: 27,

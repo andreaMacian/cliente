@@ -1,11 +1,12 @@
 class Servicio {
-  String origen, destino, tipo, metodo_pago, id_usuario, id_conductor;
+  String origen, destino, tipo, metodo_pago, id_usuario, id_conductor, tarifa;
   DateTime fechaInicio, fechaFin;
   double coste;
 
   Servicio(
       {this.origen,
       this.destino,
+      this.tarifa,
       this.tipo,
       this.metodo_pago,
       this.id_usuario,

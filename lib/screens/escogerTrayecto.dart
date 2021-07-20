@@ -102,7 +102,7 @@ class _EscogerTrayectoState extends State<EscogerTrayecto> {
                       Icons.location_pin,
                       color: azul_oscuro,
                     ),
-                    labelText: '¿A dónde vamos?',
+                    labelText: '${viaje.origen}',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(6.0)),
                       borderSide: BorderSide(
@@ -144,7 +144,7 @@ class _EscogerTrayectoState extends State<EscogerTrayecto> {
                       Icons.location_pin,
                       color: azul_oscuro,
                     ),
-                    labelText: '¿A dónde vamos?',
+                    labelText: '${viaje.destino}',
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(6.0)),
                       borderSide: BorderSide(

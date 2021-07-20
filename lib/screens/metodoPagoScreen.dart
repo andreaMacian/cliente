@@ -35,8 +35,15 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
             title: Text('El pago ha sido recibido correctamente. Gracias'),
             actions: [
               TextButton(
-                child: Text('Ok'),
+                child: Text(
+                  'Ok',
+                  style: TextStyle(
+                    fontFamily: 'SFProText-Bold',
+                    fontSize: 20,
+                  ),
+                ),
                 onPressed: () {
+                  viaje.fechaFin = DateTime.now(); //FECHA DE FINAL
                   Navigator.of(context).pop();
                   widget.changeScreen(11);
                 },
@@ -85,7 +92,7 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Servicio Taxi Premium',
+                        'Servicio Taxi ${viaje.tipo}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -93,7 +100,7 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        'Tarifa: Taximetro',
+                        'Tarifa: ${viaje.tarifa}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -184,7 +191,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                               activeColor: amarillo,
                               onChanged: (bool newValue) {
                                 setState(() {
-                                  values['Efectivo']=newValue;
+                                  values['Efectivo'] = newValue;
+                                  viaje.metodo_pago= 'Efectivo';
                                 });
                               }),
                         ],
@@ -223,7 +231,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                               activeColor: amarillo,
                               onChanged: (bool newValue) {
                                 setState(() {
-                                  values['Contactless']=newValue;
+                                  values['Contactless'] = newValue;
+                                  viaje.metodo_pago= 'Contactless';
                                 });
                               }),
                         ],
@@ -262,7 +271,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                               activeColor: amarillo,
                               onChanged: (bool newValue) {
                                 setState(() {
-                                  values['Tarjeta Bancaria']=newValue;
+                                  values['Tarjeta Bancaria'] = newValue;
+                                  viaje.metodo_pago= 'Tarjeta Bancaria';
                                 });
                               }),
                         ],
@@ -301,7 +311,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                               activeColor: amarillo,
                               onChanged: (bool newValue) {
                                 setState(() {
-                                  values['Paypal']=newValue;
+                                  values['Paypal'] = newValue;
+                                  viaje.metodo_pago= 'Paypal';
                                 });
                               }),
                         ],
@@ -350,7 +361,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                               activeColor: amarillo,
                               onChanged: (bool newValue) {
                                 setState(() {
-                                  values['Bizum']=newValue;
+                                  values['Bizum'] = newValue;
+                                  viaje.metodo_pago= 'Bizum';
                                 });
                               }),
                         ],

@@ -13,8 +13,9 @@ class EnCamino extends StatefulWidget {
 }
 
 class _EnCaminoState extends State<EnCamino> {
+
   void _startTimer() {
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 7), () {
       widget.changeScreen(9);
     });
   }
@@ -42,7 +43,7 @@ class _EnCaminoState extends State<EnCamino> {
               ),
               SizedBox(height: 12),
               Text(
-                'Recogida: Calle Aragón, 321',
+                'Recogida: ${viaje.origen}',
                 style: TextStyle(
                   fontFamily: 'SFProText-Semibold',
                   fontSize: 14,
@@ -62,7 +63,7 @@ class _EnCaminoState extends State<EnCamino> {
                   ),
                   SizedBox(width: 32),
                   Text(
-                    '3 min',
+                    '4 min',
                     style: TextStyle(
                         fontFamily: 'SFProText-Bold',
                         fontSize: 17,
@@ -72,7 +73,7 @@ class _EnCaminoState extends State<EnCamino> {
               ),
               SizedBox(height: 18),
               Text(
-                'Skoda Karoq 1032KTK - Licencia 9402',
+                '${taxista.vehiculo} ${taxista.matricula} - Licencia ${taxista.licencia} ',
                 style: TextStyle(
                   fontFamily: 'SFProText-Semibold',
                   fontSize: 14,
@@ -81,7 +82,7 @@ class _EnCaminoState extends State<EnCamino> {
               ),
               SizedBox(height: 12),
               Text(
-                'Gustavo Matínez Polo',
+                '${taxista.nombre}',
                 style: TextStyle(
                   fontFamily: 'SFProText-Regular',
                   fontSize: 14,

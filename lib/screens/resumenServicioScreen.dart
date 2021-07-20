@@ -15,7 +15,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 21, right: 18, top: 21, bottom: 11),
+      padding: const EdgeInsets.only(left: 21, right: 16, top: 21, bottom: 11),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -47,7 +47,9 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                     ),
                     Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.changeScreen(1);
+                      },
                       icon: Icon(
                         Icons.close,
                         size: 25,
@@ -63,7 +65,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Servicio Taxi Premium',
+                        'Servicio Taxi ${viaje.tipo}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -73,7 +75,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       Row(
                         children: [
                           Text(
-                            'Tarifa: Taximetro',
+                            'Tarifa: ${viaje.tarifa}',
                             style: TextStyle(
                               fontFamily: 'SFProText-Semibold',
                               fontSize: 14,
@@ -91,7 +93,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        'Método de Pago: Efectivo',
+                        'Método de Pago: ${viaje.metodo_pago}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -99,7 +101,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       ),
                       SizedBox(height: 32),
                       Text(
-                        'Recogida: Av. Carrilet, 229',
+                        'Recogida: ${viaje.origen}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -107,7 +109,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        'Destino: Carrer dels Horts, 32',
+                        'Destino: ${viaje.destino}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -115,7 +117,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        'Inicio: 16 Abril 2021, 19:32h',
+                        'Inicio:  ${viaje.fechaInicio.day} ${viaje.fechaInicio.month.toString()} ${viaje.fechaInicio.year} ${viaje.fechaInicio.hour}:${viaje.fechaInicio.minute}',// 16 Abril 2021, 19:32h',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -123,7 +125,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        'Fin: 16 Abril 2021, 19:51h',
+                        'Fin: ${viaje.fechaFin.day} ${viaje.fechaFin.month.toString()} ${viaje.fechaFin.year} ${viaje.fechaFin.hour}:${viaje.fechaFin.minute}',
                         style: TextStyle(
                           fontFamily: 'SFProText-Semibold',
                           fontSize: 14,
@@ -137,7 +139,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Seat Mii 6902GHY - Lic. 3421',
+                                '${taxista.vehiculo} ${taxista.matricula}',
                                 style: TextStyle(
                                   fontFamily: 'SFProText-Semibold',
                                   fontSize: 14,
@@ -145,7 +147,15 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                               ),
                               SizedBox(height: 6),
                               Text(
-                                'Paco Sánchez Álamo',
+                                'Lic. ${taxista.licencia}',
+                                style: TextStyle(
+                                  fontFamily: 'SFProText-Semibold',
+                                  fontSize: 14,
+                                ),
+                              ),
+                              SizedBox(height: 6),
+                              Text(
+                                '${taxista.nombre}',
                                 style: TextStyle(
                                   fontFamily: 'SFProText-Regular',
                                   fontSize: 14,
@@ -248,7 +258,7 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 36),
+                      SizedBox(height: 24),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -258,9 +268,9 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                                     amarillo)), //COLOR BOTON
                             onPressed: () {
                               widget.changeScreen(1);
-                              viaje.tipo=null;
-                              viaje.destino=null;
-                              viaje.origen=null;
+                              viaje.tipo = null;
+                              viaje.destino = null;
+                              viaje.origen = null;
                             },
                             child: Text(
                               'Finalizar Servicio',

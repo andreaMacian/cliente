@@ -15,7 +15,7 @@ class EnRuta extends StatefulWidget {
 class _EnRutaState extends State<EnRuta> {
   //ESTE TIMER DEBERÍA QUITARSE
   void _startTimer() {
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 8), () {
       widget.changeScreen(10);
     });
   }
@@ -38,7 +38,7 @@ class _EnRutaState extends State<EnRuta> {
           ),
           SizedBox(height: 12),
           Text(
-            'Destino: Av. Diagonal, 133',
+            'Destino: ${viaje.destino}',
             style: TextStyle(
               fontFamily: 'SFProText-Semibold',
               fontSize: 14,
@@ -59,7 +59,7 @@ class _EnRutaState extends State<EnRuta> {
                 ),
               ),
               Text(
-                '14 min',
+                '4 min',
                 style: TextStyle(
                   fontFamily: 'SFProText-Bold',
                   fontSize: 17,

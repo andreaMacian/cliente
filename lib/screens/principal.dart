@@ -5,15 +5,28 @@ class PrincipalWidget extends StatefulWidget {
   //const PrincipalWidget({ Key ? key }) : super(key: key);
   const PrincipalWidget({Key key, this.changeScreen}) : super(key: key);
 
- final Function (int numScreen) changeScreen;
+  final Function(int numScreen) changeScreen;
 
-  
   @override
   _PrincipalWidgetState createState() => _PrincipalWidgetState();
 }
 
 class _PrincipalWidgetState extends State<PrincipalWidget> {
-  int numScreen=1;
+  int numScreen = 1;
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    myController.dispose();
+    super.dispose();
+  }
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +58,7 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                 child: IconButton(
                   onPressed: () {
                     widget.changeScreen(3);
-                    numScreen=3;
+                    numScreen = 3;
                   },
                   icon: Icon(
                     Icons.person_rounded,
@@ -69,7 +82,7 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                 child: IconButton(
                   onPressed: () {
                     widget.changeScreen(4);
-                    numScreen=4;
+                    numScreen = 4;
                   },
                   icon: Icon(
                     Icons.calendar_today_rounded,
@@ -82,7 +95,7 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
               IconButton(
                 onPressed: () {
                   widget.changeScreen(6);
-                  numScreen=6;
+                  numScreen = 6;
                 },
                 icon: Icon(
                   Icons.arrow_forward_ios_rounded,
@@ -100,6 +113,10 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                 height: 40,
                 width: 340,
                 child: TextField(
+                  controller: myController,
+                  onTap: (){
+                    widget.changeScreen(2);
+                  },
                   decoration: InputDecoration(
                     icon: Icon(
                       Icons.location_pin,
@@ -141,9 +158,8 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                     setState(() {
                       if (viaje.tipo != 'Eco') {
                         viaje.tipo = 'Eco';
-                      }
-                      else{
-                        viaje.tipo=null;
+                      } else {
+                        viaje.tipo = null;
                       }
                     });
                     //print(viaje.tipo);
@@ -172,9 +188,8 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                     setState(() {
                       if (viaje.tipo != 'Premium') {
                         viaje.tipo = 'Premium';
-                      }
-                      else{
-                        viaje.tipo=null;
+                      } else {
+                        viaje.tipo = null;
                       }
                     });
                   },
@@ -202,9 +217,8 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                     setState(() {
                       if (viaje.tipo != 'XL') {
                         viaje.tipo = 'XL';
-                      }
-                      else{
-                        viaje.tipo=null;
+                      } else {
+                        viaje.tipo = null;
                       }
                     });
                   },
@@ -232,9 +246,8 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                     setState(() {
                       if (viaje.tipo != 'Adaptable') {
                         viaje.tipo = 'Adaptable';
-                      }
-                      else{
-                        viaje.tipo=null;
+                      } else {
+                        viaje.tipo = null;
                       }
                     });
                   },
@@ -262,16 +275,16 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                     setState(() {
                       if (viaje.tipo != 'Paquetería') {
                         viaje.tipo = 'Paquetería';
-                      }
-                      else{
-                        viaje.tipo=null;
+                      } else {
+                        viaje.tipo = null;
                       }
                     });
                   },
                   icon: Icon(
                     Icons.inventory_2_rounded,
                     size: 24,
-                    color: (viaje.tipo == 'Paquetería') ? amarillo : azul_oscuro,
+                    color:
+                        (viaje.tipo == 'Paquetería') ? amarillo : azul_oscuro,
                   ),
                 ),
               ),
@@ -292,9 +305,8 @@ class _PrincipalWidgetState extends State<PrincipalWidget> {
                     setState(() {
                       if (viaje.tipo != 'Comidas') {
                         viaje.tipo = 'Comidas';
-                      }
-                      else{
-                        viaje.tipo=null;
+                      } else {
+                        viaje.tipo = null;
                       }
                     });
                   },
