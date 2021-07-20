@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:js';
+//import 'dart:js';
 
 import 'package:flutter/material.dart';
 
@@ -16,6 +16,14 @@ class MetodoPagoScreen extends StatefulWidget {
 class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
   bool valorCheckBox = false;
 
+  Map<String, bool> values = {
+    'Efectivo': false,
+    'Contactless': false,
+    'Tarjeta Bancaria': false,
+    'Paypal': false,
+    'Bizum': false,
+  };
+
   @override
   Widget build(BuildContext context) {
     showAlertDialog() {
@@ -24,11 +32,12 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            content: Text('El pago ha sido recibido correctamente. Gracias'),
+            title: Text('El pago ha sido recibido correctamente. Gracias'),
             actions: [
               TextButton(
                 child: Text('Ok'),
                 onPressed: () {
+                  Navigator.of(context).pop();
                   widget.changeScreen(11);
                 },
               ),
@@ -39,7 +48,7 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
     }
 
     void _startTimer() {
-      Timer(Duration(seconds: 12), () {
+      Timer(Duration(seconds: 3), () {
         //widget.changeScreen(11);
         showAlertDialog();
       });
@@ -171,9 +180,13 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                           ),
                           Spacer(),
                           Checkbox(
-                              value: valorCheckBox,
-                              checkColor: amarillo,
-                              onChanged: (bool newValue) {}),
+                              value: values['Efectivo'],
+                              activeColor: amarillo,
+                              onChanged: (bool newValue) {
+                                setState(() {
+                                  values['Efectivo']=newValue;
+                                });
+                              }),
                         ],
                       ),
                       SizedBox(
@@ -206,9 +219,13 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                           ),
                           Spacer(),
                           Checkbox(
-                              value: valorCheckBox,
-                              checkColor: amarillo,
-                              onChanged: (bool newValue) {}),
+                              value: values['Contactless'],
+                              activeColor: amarillo,
+                              onChanged: (bool newValue) {
+                                setState(() {
+                                  values['Contactless']=newValue;
+                                });
+                              }),
                         ],
                       ),
                       SizedBox(
@@ -241,9 +258,13 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                           ),
                           Spacer(),
                           Checkbox(
-                              value: valorCheckBox,
-                              checkColor: amarillo,
-                              onChanged: (bool newValue) {}),
+                              value: values['Tarjeta Bancaria'],
+                              activeColor: amarillo,
+                              onChanged: (bool newValue) {
+                                setState(() {
+                                  values['Tarjeta Bancaria']=newValue;
+                                });
+                              }),
                         ],
                       ),
                       SizedBox(
@@ -276,9 +297,13 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                           ),
                           Spacer(),
                           Checkbox(
-                              value: valorCheckBox,
-                              checkColor: amarillo,
-                              onChanged: (bool newValue) {}),
+                              value: values['Paypal'],
+                              activeColor: amarillo,
+                              onChanged: (bool newValue) {
+                                setState(() {
+                                  values['Paypal']=newValue;
+                                });
+                              }),
                         ],
                       ),
                       SizedBox(
@@ -321,9 +346,13 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                           ),
                           Spacer(),
                           Checkbox(
-                              value: valorCheckBox,
-                              checkColor: amarillo,
-                              onChanged: (bool newValue) {}),
+                              value: values['Bizum'],
+                              activeColor: amarillo,
+                              onChanged: (bool newValue) {
+                                setState(() {
+                                  values['Bizum']=newValue;
+                                });
+                              }),
                         ],
                       ),
                       SizedBox(height: 24),
@@ -452,8 +481,8 @@ class _MetodoPagoScreenState extends State<MetodoPagoScreen> {
                                 backgroundColor: MaterialStateProperty.all(
                                     amarillo)), //COLOR BOTON
                             onPressed: () {
-                              //_startTimer();
-                              showAlertDialog();
+                              _startTimer();
+                              //showAlertDialog();
                             },
                             child: Text(
                               'Proceder al Pago',

@@ -64,7 +64,10 @@ class _HomeState extends State<Home> {
   int screen = 1; //POR DEFECTO AL INICIO ES LA 1
   GoogleMapController mapController;
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  double latitudActual;
+  double longitudActual;
+
+  /*final*/ LatLng center = LatLng(45.321563, -122.677433);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -102,6 +105,18 @@ class _HomeState extends State<Home> {
       mainWidget = ResumenServicioScreen(changeScreen: _changeScreens);
     }
 
+   /* List<LatLng> trayecto = [
+      center,
+      LatLng(45.521563, -122.977433),
+      LatLng(45.721563, -123.277433),
+      LatLng(45.921563, -123.677433),
+      LatLng(46.121563, -124.077433),
+      LatLng(46.321563, -124.477433),
+      LatLng(46.521563, -124.877433),
+      LatLng(46.721563, -125.277433),
+      LatLng(46.921563, -125.777433),
+    ];*/
+
     return MaterialApp(
       title: 'App de Clientes',
       theme: ThemeData(fontFamily: 'SFProText-Semibold'),
@@ -114,9 +129,10 @@ class _HomeState extends State<Home> {
             GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: CameraPosition(
-                target: _center,
+                target: center,
                 zoom: 11.0,
               ),
+              myLocationEnabled: true,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,

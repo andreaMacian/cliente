@@ -27,7 +27,7 @@ class _EnCaminoState extends State<EnCamino> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

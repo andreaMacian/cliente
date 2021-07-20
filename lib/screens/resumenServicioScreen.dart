@@ -258,6 +258,9 @@ class _ResumenServicioScreenState extends State<ResumenServicioScreen> {
                                     amarillo)), //COLOR BOTON
                             onPressed: () {
                               widget.changeScreen(1);
+                              viaje.tipo=null;
+                              viaje.destino=null;
+                              viaje.origen=null;
                             },
                             child: Text(
                               'Finalizar Servicio',

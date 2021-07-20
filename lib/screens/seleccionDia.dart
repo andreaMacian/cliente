@@ -1,10 +1,11 @@
+import 'dart:async';
+
 import 'package:clienteapp/home.dart';
 import 'package:flutter/material.dart';
 
 class SeleccionDia extends StatefulWidget {
   //const SeleccionDia({ Key? key }) : super(key: key);
-  const SeleccionDia({Key key, this.changeScreen}) : super(key: key);
-
+  SeleccionDia({Key key, this.changeScreen}) : super(key: key);
   final Function(int numScreen) changeScreen;
   @override
   _SeleccionDiaState createState() => _SeleccionDiaState();
@@ -12,7 +13,16 @@ class SeleccionDia extends StatefulWidget {
 
 class _SeleccionDiaState extends State<SeleccionDia> {
   int numScreen = 4;
-  bool valorCheckBox = false;
+  Map<String, bool> values = {
+    'Conductor': false,
+  };
+
+  void _startTimer() {
+    Timer(Duration(seconds: 1), () {
+      widget.changeScreen(5);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -157,18 +167,12 @@ class _SeleccionDiaState extends State<SeleccionDia> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Checkbox(
-                  value: valorCheckBox,
-                  checkColor: amarillo,
+                  value: values['Conductor'],
+                  activeColor: amarillo,
                   onChanged: (bool newValue) {
                     setState(() {
-                      valorCheckBox = newValue;
-                      if (valorCheckBox) {
-                        widget.changeScreen(5);
-                        numScreen = 5;
-                      } else {
-                        widget.changeScreen(4);
-                        numScreen = 4;
-                      }
+                      values['Conductor'] = newValue;
+                      _startTimer();
                     });
                   }),
               Text(
